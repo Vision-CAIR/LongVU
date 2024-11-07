@@ -54,8 +54,7 @@ class EvalDataset(torch.utils.data.IterableDataset):
         super(EvalDataset, self).__init__()
 
         # pyre-fixme[4]: Attribute must be annotated.
-        self.data = json.load(open(data_path, "r"))
-
+        self.data = json.load(open(os.path.join(data_path,"questions.json"), "r"))
     def __len__(self) -> int:
         return len(self.data)
 
@@ -203,16 +202,19 @@ def train(args) -> None:
 
         letters = ["A", "B", "C", "D", "E"]
         pred_answer = re.findall("[\(\ ]*[A-E][\)\ ]*", pred)
-
-        pred_answer = pred_answer[0].strip()
-        pred_answer = pred_answer.strip("()")
-        if pred_answer in letters:
-            pred_idx = letters.index(pred_answer)
-            pred = letters[pred_idx]
-        else:
-            print("pred_answer: ", pred_answer, " pred: ", pred, flush=True)
+        if not pred_answer:
             pred_idx = 2
             pred = letters[pred_idx]
+        else:
+            pred_answer = pred_answer[0].strip()
+            pred_answer = pred_answer.strip("()")
+            if pred_answer in letters:
+                pred_idx = letters.index(pred_answer)
+                pred = letters[pred_idx]
+            else:
+                print("pred_answer: ", pred_answer, " pred: ", pred, flush=True)
+                pred_idx = 2
+                pred = letters[pred_idx]
 
         ans_id = uuid.uuid4()
         output.append(

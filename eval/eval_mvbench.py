@@ -342,16 +342,22 @@ def train(args) -> None:
         pred_answer = re.findall(
             f"[\(,\ ]*[{letters[0]}-{letters[-1]}][\),\ ]*", pred
         )
-
-        pred_answer = pred_answer[0].strip()
-        pred_answer = pred_answer.strip("()")
-        if pred_answer in letters:
-            pred_idx = letters.index(pred_answer)
-            pred = letters[pred_idx]
-        else:
-            print("pred_answer: ", pred_answer, " pred: ", pred, flush=True)
+        if not pred_answer:
             pred_idx = 2
-            pred = letters[pred_idx]
+            try:
+                pred = letters[pred_idx]
+            except:
+                pred = None    
+        else:
+            pred_answer = pred_answer[0].strip()
+            pred_answer = pred_answer.strip("()")
+            if pred_answer in letters:
+                pred_idx = letters.index(pred_answer)
+                pred = letters[pred_idx]
+            else:
+                print("pred_answer: ", pred_answer, " pred: ", pred, flush=True)
+                pred_idx = 2
+                pred = letters[pred_idx]
 
         ans_id = uuid.uuid4()
         output.append(
