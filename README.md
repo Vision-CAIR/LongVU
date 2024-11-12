@@ -12,7 +12,7 @@
 
 Try our model on [HF 🤗 Demo](https://huggingface.co/spaces/Vision-CAIR/LongVU)
 
-Or demploy from local
+Or deploy from local
 
 ### Linux
 
