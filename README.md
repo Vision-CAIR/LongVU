@@ -1,6 +1,6 @@
 # LongVU
 
-> **LongVU: Spatiotemporal Adaptive Compression for Long Video-Language Understanding**
+> **LongVU: Spatiotemporal Adaptive Compression for Long Video-Language Understanding [ICML 2025]**
 >
 > <a href='https://arxiv.org/abs/2410.17434'><img src='https://img.shields.io/badge/arXiv-paper-red'></a> <a href='https://vision-cair.github.io/LongVU'><img src='https://img.shields.io/badge/project-LongVU-blue'></a> <a href='https://huggingface.co/spaces/Vision-CAIR/LongVU'><img src='https://img.shields.io/badge/demo-space-blue'></a> <a href='https://huggingface.co/collections/Vision-CAIR/longvu-67181d2debabfc1eb050c21d'><img src='https://img.shields.io/badge/model-checkpoints-yellow'></a> 
 
